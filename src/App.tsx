@@ -73,7 +73,9 @@ export const App = () => {
 
       <form onSubmit={handleFormSubmit}>
         <div className="field">
+          <label htmlFor="title">User</label>
           <input
+            id="title"
             type="text"
             data-cy="titleInput"
             placeholder="Enter a title"
@@ -84,7 +86,9 @@ export const App = () => {
         </div>
 
         <div className="field">
+          <label htmlFor="user">User</label>
           <select
+            id="user"
             data-cy="userSelect"
             value={selectedUserId}
             onChange={handleUserChange}
