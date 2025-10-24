@@ -1,10 +1,7 @@
+import { User } from '../../types/user';
+
 interface Props {
-  user: {
-    id: number;
-    name: string;
-    username: string;
-    email: string;
-  };
+  user: User;
 }
 
 export const UserInfo = ({ user }: Props) => {

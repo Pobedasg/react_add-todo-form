@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import classNames from 'classnames';
 import usersFromServer from './api/users';
 import todosFromServer from './api/todos';
 import { TodoList } from './components/TodoList';
@@ -54,6 +55,10 @@ export const App = () => {
       user => user.id === Number(selectedUserId),
     );
 
+    if (!selectedUser) {
+      return;
+    }
+
     const newTodo = {
       id: nextId,
       title: titleInput.trim(),
@@ -73,7 +78,7 @@ export const App = () => {
 
       <form onSubmit={handleFormSubmit}>
         <div className="field">
-          <label htmlFor="title">User</label>
+          <label htmlFor="title">Title</label>
           <input
             id="title"
             type="text"
@@ -81,6 +86,7 @@ export const App = () => {
             placeholder="Enter a title"
             value={titleInput}
             onChange={handleTitleChange}
+            className={classNames({ 'is-danger': titleError })}
           />
           {titleError && <span className="error">Please enter a title</span>}
         </div>
@@ -92,6 +98,7 @@ export const App = () => {
             data-cy="userSelect"
             value={selectedUserId}
             onChange={handleUserChange}
+            className={classNames({ 'is-danger': userError })}
           >
             <option value="">Choose a user</option>
             {usersFromServer.map(user => (

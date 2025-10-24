@@ -1,24 +1,17 @@
+import { Todo } from '../../types/todo';
+import { TodoWithUser } from '../../types/todoWithUser';
 import { TodoInfo } from '../TodoInfo/TodoInfo';
-
-interface Todo {
-  id: number;
-  title: string;
-  completed: boolean;
-  userId: number;
-  user?: {
-    id: number;
-    name: string;
-    username: string;
-    email: string;
-  };
-}
 
 interface Props {
   todos: Todo[];
 }
 
 export const TodoList = ({ todos }: Props) => {
-  const todosWithUser = todos.filter(todo => todo.user);
+  const isTodoWithUser = (todo: Todo): todo is TodoWithUser => {
+    return todo.user !== undefined;
+  };
+
+  const todosWithUser = todos.filter(isTodoWithUser);
 
   if (!todosWithUser.length) {
     return null;
