@@ -98,6 +98,18 @@ module.exports = {
         },
       },
     ],
+
+    // Import
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        ts: 'never',
+        tsx: 'never',
+        js: 'never',
+        jsx: 'never',
+      },
+    ],
   },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'vite.config.ts', 'src/vite-env.d.ts', 'cypress'],
   settings: {

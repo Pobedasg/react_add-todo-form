@@ -3,10 +3,11 @@ import classNames from 'classnames';
 import usersFromServer from './api/users';
 import todosFromServer from './api/todos';
 import { TodoList } from './components/TodoList';
+import { Todo } from './types/todo';
 import './App.scss';
 
 export const App = () => {
-  const [todos, setTodos] = useState(
+  const [todos, setTodos] = useState<Todo[]>(
     todosFromServer.map(todo => ({
       ...todo,
       user: usersFromServer.find(user => user.id === todo.userId),
@@ -59,7 +60,7 @@ export const App = () => {
       return;
     }
 
-    const newTodo = {
+    const newTodo: Todo = {
       id: nextId,
       title: titleInput.trim(),
       completed: false,
@@ -77,7 +78,7 @@ export const App = () => {
       <h1>Add todo form</h1>
 
       <form onSubmit={handleFormSubmit}>
-        <div className="field">
+        <div className={classNames('field', { 'has-error': titleError })}>
           <label htmlFor="title">Title</label>
           <input
             id="title"
@@ -86,19 +87,19 @@ export const App = () => {
             placeholder="Enter a title"
             value={titleInput}
             onChange={handleTitleChange}
-            className={classNames({ 'is-danger': titleError })}
+            className={classNames({ error: titleError })}
           />
           {titleError && <span className="error">Please enter a title</span>}
         </div>
 
-        <div className="field">
+        <div className={classNames('field', { 'has-error': userError })}>
           <label htmlFor="user">User</label>
           <select
             id="user"
             data-cy="userSelect"
             value={selectedUserId}
             onChange={handleUserChange}
-            className={classNames({ 'is-danger': userError })}
+            className={classNames({ error: userError })}
           >
             <option value="">Choose a user</option>
             {usersFromServer.map(user => (
