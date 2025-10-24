@@ -1,5 +1,5 @@
-import { Todo } from '../../types/todo';
-import { TodoWithUser } from '../../types/todoWithUser';
+import { Todo } from '../../types/todo.js';
+import { TodoWithUser } from '../../types/todoWithUser.js';
 import { TodoInfo } from '../TodoInfo/TodoInfo';
 
 interface Props {

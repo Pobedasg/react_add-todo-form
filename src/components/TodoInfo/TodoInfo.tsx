@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { UserInfo } from '../UserInfo/UserInfo';
-import { TodoWithUser } from '../../types/todoWithUser';
+import { TodoWithUser } from '../../types/todoWithUser.js';
 interface Props {
   todo: TodoWithUser;
 }
