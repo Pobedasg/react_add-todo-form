@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import usersFromServer from './api/users';
 import todosFromServer from './api/todos';
 import { TodoList } from './components/TodoList';
-import { Todo } from './types/todo';
+import { Todo } from './types/Todo';
 import './App.scss';
 
 export const App = () => {
@@ -87,7 +87,6 @@ export const App = () => {
             placeholder="Enter a title"
             value={titleInput}
             onChange={handleTitleChange}
-            className={classNames({ error: titleError })}
           />
           {titleError && <span className="error">Please enter a title</span>}
         </div>
@@ -99,7 +98,6 @@ export const App = () => {
             data-cy="userSelect"
             value={selectedUserId}
             onChange={handleUserChange}
-            className={classNames({ error: userError })}
           >
             <option value="">Choose a user</option>
             {usersFromServer.map(user => (

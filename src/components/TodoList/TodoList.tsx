@@ -1,5 +1,5 @@
-import { Todo } from '../../types/todo';
-import { TodoWithUser } from '../../types/todoWithUser';
+import { Todo } from '../../types/Todo';
+import { TodoWithUser } from '../../types/TodoWithUser';
 import { TodoInfo } from '../TodoInfo/TodoInfo';
 
 interface Props {
@@ -20,7 +20,7 @@ export const TodoList = ({ todos }: Props) => {
   return (
     <section className="TodoList">
       {todosWithUser.map(todo => (
-        <TodoInfo key={todo.id} todo={todo as Required<Todo>} />
+        <TodoInfo key={todo.id} todo={todo} />
       ))}
     </section>
   );
